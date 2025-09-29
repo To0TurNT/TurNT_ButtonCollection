@@ -93,7 +93,7 @@
     padding: 8px 16px;
     color: white;
     font-family: 'Inter', sans-serif;
-    font-size: 12px;
+    font-size: 18px;
     cursor: pointer;
     z-index: 10002;
     transition: all 0.3s ease;
@@ -235,4 +235,5 @@
         left: 20px;
         right: 20px;
     }
+
 }
