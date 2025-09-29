@@ -5,12 +5,12 @@ const CONFIG = {
         duration: 200
     },
     matrix: {
-        chars: '01▓▒░█▄▀■▌▪▫',
+        chars: '01â–“â–’â–‘â–ˆâ–„â–€â– â–Œâ–ªâ–«',
         scrambleInterval: 50,
         scrambleCount: 10
     },
     quantum: {
-        chars: '◊◈◇◆♦▲▼◀▶⬢⬡⬟⬠⬢⬡◯◮◭◬⟁⟑⟒⟔',
+        chars: 'â—Šâ—ˆâ—‡â—†â™¦â–²â–¼â—€â–¶â¬¢â¬¡â¬Ÿâ¬ â¬¢â¬¡â—¯â—®â—­â—¬âŸâŸ‘âŸ’âŸ”',
         particleCount: 20,
         explosionDuration: 3000,
         textScrambleCycles: 15,
@@ -151,41 +151,12 @@ const AudioManager = {
     }
 };
 
-const CounterManager = {
-    async increment() {
-        try {
-            const response = await fetch(`https://api.countapi.xyz/hit/${CONFIG.counter.namespace}/${CONFIG.counter.key}`);
-            const data = await response.json();
-            return data.value;
-        } catch (error) {
-            console.error('Counter error:', error);
-        }
-    },
-    async get() {
-        try {
-            const response = await fetch(`https://api.countapi.xyz/get/${CONFIG.counter.namespace}/${CONFIG.counter.key}`);
-            const data = await response.json();
-            return data.value;
-        } catch (error) {
-            console.error('Counter error:', error);
-        }
-    }
-};
-
 document.addEventListener('DOMContentLoaded', () => {
     AudioManager.init();
-    CounterManager.get().then(count => {
-        const counterEl = document.getElementById('clickCounter');
-        if (counterEl && count) counterEl.textContent = count.toLocaleString();
-    });
     document.addEventListener('click', function(event) {
         const button = event.target.closest('button, .glass-button, .enhanced-glass-button, .keycap-button, [role="button"], .btn, .button');
         if (button) {
             AudioManager.playButtonSound(button);
-            CounterManager.increment().then(count => {
-                const counterEl = document.getElementById('clickCounter');
-                if (counterEl && count) counterEl.textContent = count.toLocaleString();
-            });
         }
     });
 });
@@ -503,6 +474,3 @@ generateQuantumParticleKeyframes();
 document.getElementById('quantumButton')?.addEventListener('click', function() {
     quantumNexusClick(this);
 });
-
-
-
