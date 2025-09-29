@@ -45,18 +45,6 @@ body::before {
     pointer-events: none;
 }
 
-.counter-display {
-    font-size: 1.1em;
-    color: #00ffff;
-    margin-top: 10px;
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-}
-
-#clickCounter {
-    font-weight: 700;
-    color: #ff00ff;
-}
-
 .header {
     text-align: center;
     margin-bottom: 40px;
@@ -1036,3 +1024,4 @@ body::before {
     }
 
 }
+
