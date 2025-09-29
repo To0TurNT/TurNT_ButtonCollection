@@ -8,7 +8,7 @@ Watch the challenge: [This Button Broke Our Brains (CSS Challenge)](https://yout
 
 Check out the button collection here: **[https://to0turnt.github.io/TurNT_ButtonCollection/](https://to0turnt.github.io/TurNT_ButtonCollection/)**
 
-[![Button Collection Preview](buttoncollectionpreview.png)](https://to0turnt.github.io/TurNT_ButtonCollection/)
+[![Button Collection Preview](preview.png)](https://to0turnt.github.io/TurNT_ButtonCollection/)
 
 ## About
 
