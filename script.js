@@ -178,11 +178,18 @@ const CounterManager = {
 
 document.addEventListener('DOMContentLoaded', () => {
     AudioManager.init();
+    CounterManager.get().then(count => {
+        const counterEl = document.getElementById('clickCounter');
+        if (counterEl && count) counterEl.textContent = count.toLocaleString();
+    });
     document.addEventListener('click', function(event) {
         const button = event.target.closest('button, .glass-button, .enhanced-glass-button, .keycap-button, [role="button"], .btn, .button');
         if (button) {
             AudioManager.playButtonSound(button);
-            CounterManager.increment();
+            CounterManager.increment().then(count => {
+                const counterEl = document.getElementById('clickCounter');
+                if (counterEl && count) counterEl.textContent = count.toLocaleString();
+            });
         }
     });
 });
@@ -500,4 +507,5 @@ generateQuantumParticleKeyframes();
 document.getElementById('quantumButton')?.addEventListener('click', function() {
     quantumNexusClick(this);
 });
+
 
