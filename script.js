@@ -79,10 +79,6 @@ const CONFIG = {
             'sounds/john.mp3',
             'sounds/nut.mp3',            
         ]
-    },
-    counter: {
-        namespace: 'turnt-buttons',
-        key: 'total-clicks'
     }
 };
 
@@ -507,5 +503,6 @@ generateQuantumParticleKeyframes();
 document.getElementById('quantumButton')?.addEventListener('click', function() {
     quantumNexusClick(this);
 });
+
 
 
