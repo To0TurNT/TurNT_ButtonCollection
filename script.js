@@ -10,7 +10,7 @@ const CONFIG = {
         scrambleCount: 10
     },
     quantum: {
-        chars: '◊◈◇◆♦▲▼◀▶⬢⬡⬟⬠⬢⬡◯◮◭◬⟁⟑⟒⟓',
+        chars: '◊◈◇◆♦▲▼◀▶⬢⬡⬟⬠⬢⬡◯◮◭◬⟁⟑⟒⟔',
         particleCount: 20,
         explosionDuration: 3000,
         textScrambleCycles: 15,
@@ -71,7 +71,14 @@ const CONFIG = {
         }
     },
     audio: {
-        lizardSound: 'sounds/lizard.mp3'
+        sounds: [
+            'sounds/lizard.mp3',
+            'sounds/diabeetus.mp3',
+            'sounds/erro.mp3',
+            'sounds/fart.mp3',
+            'sounds/john.mp3',
+            'sounds/nut.mp3',            
+        ]
     }
 };
 
@@ -110,25 +117,48 @@ const Utils = {
 };
 
 const AudioManager = {
-    lizardSound: null,
+    sounds: [],
+    buttonSounds: new Map(),
+    lastClickedButton: null, 
     init() {
-        this.lizardSound = new Audio(CONFIG.audio.lizardSound);
-        this.lizardSound.load();
-    },
-    playLizardSound() {
-        if (!this.lizardSound) {
-            console.warn('Lizard sound not initialized');
-            return;
-        }
-        const sound = this.lizardSound.cloneNode();
-        sound.play().catch(error => {
-            console.error('Error playing lizard sound:', error);
+        CONFIG.audio.sounds.forEach(soundPath => {
+            const audio = new Audio(soundPath);
+            audio.load();
+            this.sounds.push(audio);
         });
+        this.shuffleButtonSounds();
+    },
+    shuffleButtonSounds() {
+        const shuffledSounds = [...this.sounds].sort(() => Math.random() - 0.5);
+        const allButtons = document.querySelectorAll('.glass-button, .enhanced-glass-button, .keycap-button');
+        allButtons.forEach((button, index) => {
+            const soundIndex = index % shuffledSounds.length;
+            this.buttonSounds.set(button, shuffledSounds[soundIndex]);
+        });
+    },
+    playButtonSound(button) {
+        if (this.lastClickedButton && this.lastClickedButton !== button) {
+            this.shuffleButtonSounds();
+        }
+        this.lastClickedButton = button;
+        const sound = this.buttonSounds.get(button);
+        if (sound) {
+            const soundClone = sound.cloneNode();
+            soundClone.play().catch(error => {
+                console.error('Error playing sound:', error);
+            });
+        }
     }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
     AudioManager.init();
+    document.addEventListener('click', function(event) {
+        const button = event.target.closest('button, .glass-button, .enhanced-glass-button, .keycap-button, [role="button"], .btn, .button');
+        if (button) {
+            AudioManager.playButtonSound(button);
+        }
+    });
 });
 
 document.querySelectorAll('.glass-button').forEach(button => {
@@ -149,7 +179,6 @@ document.querySelectorAll('.glass-button').forEach(button => {
     });
     
     button.addEventListener('click', function() {
-        AudioManager.playLizardSound();
         const buttonType = this.classList[1];
         const clickHandlers = {
             'cyberpunk': () => cyberpunkClick(this),
@@ -175,7 +204,6 @@ document.querySelectorAll('.enhanced-glass-button').forEach(button => {
         this.style.filter = '';
     });
     button.addEventListener('click', function(e) {
-        AudioManager.playLizardSound();
         const rect = this.getBoundingClientRect();
         const x = ((e.clientX - rect.left) / rect.width) * 100;
         const y = ((e.clientY - rect.top) / rect.height) * 100;
