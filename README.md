@@ -2,7 +2,7 @@
 
 Just a collection of some buttons I've made.
 
-## 🔗 Live Preview
+## Live Preview
 
 Check out the button collection here: **[https://to0turnt.github.io/TurNT_ButtonCollection/](https://to0turnt.github.io/TurNT_ButtonCollection/)**
 
