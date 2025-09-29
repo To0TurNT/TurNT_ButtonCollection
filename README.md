@@ -18,9 +18,6 @@ Check out the button collection here: **[https://to0turnt.github.io/TurNT_Button
 
 A showcase of various custom button designs and styles created for web projects. Each button features unique visual effects, animations, and sound feedback for an engaging interactive experience.
 
-## Usage
-
-Feel free to browse the collection and use these buttons in your own projects!
 
 ## License
 
