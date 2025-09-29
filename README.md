@@ -4,7 +4,7 @@ Just a collection of some buttons I've made with spam-friendly sound shuffle sys
 
 ## Stats
 
-![Button Clicks](https://api.countapi.xyz/hit/turnt-buttons/total-clicks/badge.svg)
+![Button Clicks](https://img.shields.io/badge/dynamic/json?color=ff00ff&label=Total%20Clicks&query=value&url=https%3A%2F%2Fapi.countapi.xyz%2Fget%2Fturnt-buttons%2Ftotal-clicks)
 
 ## Live Preview
 
