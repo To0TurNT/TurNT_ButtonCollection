@@ -2,10 +2,6 @@
 
 Just a collection of some buttons I've made with spam-friendly sound shuffle system.
 
-## Stats
-
-![Button Clicks](https://img.shields.io/badge/dynamic/json?color=ff00ff&label=Total%20Clicks&query=value&url=https%3A%2F%2Fapi.countapi.xyz%2Fget%2Fturnt-buttons%2Ftotal-clicks)
-
 ## Live Preview
 
 Check out the button collection here: **[https://to0turnt.github.io/TurNT_ButtonCollection/](https://to0turnt.github.io/TurNT_ButtonCollection/)**
