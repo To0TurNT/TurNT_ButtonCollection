@@ -6,7 +6,7 @@ Just a collection of some buttons I've made.
 
 Check out the button collection here: **[https://to0turnt.github.io/TurNT_ButtonCollection/](https://to0turnt.github.io/TurNT_ButtonCollection/)**
 
-![Button Collection Preview](buttoncollectionpreview.png)
+[![Button Collection Preview](buttoncollectionpreview.png)](https://to0turnt.github.io/TurNT_ButtonCollection/)
 
 ## About
 
