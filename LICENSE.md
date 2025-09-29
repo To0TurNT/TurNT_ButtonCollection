@@ -1,5 +1,5 @@
 The TurNT Button Collection License (Version 1.0)
-Copyright (c) 2025 To0TurNT
+Copyright (c) 2025 TurNT (To0TurNT)
 
 This software, "TurNT Button Collection" ("the Software"), is provided under the terms of this license. It is a source-available license that grants broad permissions for use, modification, and distribution, similar to the MIT License, but with a few key restrictions designed to protect the sustainability of the project.
 
