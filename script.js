@@ -79,6 +79,10 @@ const CONFIG = {
             'sounds/john.mp3',
             'sounds/nut.mp3',            
         ]
+    },
+    counter: {
+        namespace: 'turnt-buttons',
+        key: 'total-clicks'
     }
 };
 
@@ -151,12 +155,34 @@ const AudioManager = {
     }
 };
 
+const CounterManager = {
+    async increment() {
+        try {
+            const response = await fetch(`https://api.countapi.xyz/hit/${CONFIG.counter.namespace}/${CONFIG.counter.key}`);
+            const data = await response.json();
+            return data.value;
+        } catch (error) {
+            console.error('Counter error:', error);
+        }
+    },
+    async get() {
+        try {
+            const response = await fetch(`https://api.countapi.xyz/get/${CONFIG.counter.namespace}/${CONFIG.counter.key}`);
+            const data = await response.json();
+            return data.value;
+        } catch (error) {
+            console.error('Counter error:', error);
+        }
+    }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     AudioManager.init();
     document.addEventListener('click', function(event) {
         const button = event.target.closest('button, .glass-button, .enhanced-glass-button, .keycap-button, [role="button"], .btn, .button');
         if (button) {
             AudioManager.playButtonSound(button);
+            CounterManager.increment();
         }
     });
 });
@@ -474,3 +500,4 @@ generateQuantumParticleKeyframes();
 document.getElementById('quantumButton')?.addEventListener('click', function() {
     quantumNexusClick(this);
 });
+
