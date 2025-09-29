@@ -69,9 +69,11 @@ const CONFIG = {
             secondary: 'rgba(0, 255, 255, 0.6)',
             tertiary: 'rgba(255, 0, 128, 0.4)'
         }
+    },
+    audio: {
+        lizardSound: 'sounds/lizard.mp3'
     }
 };
-
 
 const Utils = {
     randomBetween: (min, max) => Math.random() * (max - min) + min,
@@ -107,6 +109,28 @@ const Utils = {
     }
 };
 
+const AudioManager = {
+    lizardSound: null,
+    init() {
+        this.lizardSound = new Audio(CONFIG.audio.lizardSound);
+        this.lizardSound.load();
+    },
+    playLizardSound() {
+        if (!this.lizardSound) {
+            console.warn('Lizard sound not initialized');
+            return;
+        }
+        const sound = this.lizardSound.cloneNode();
+        sound.play().catch(error => {
+            console.error('Error playing lizard sound:', error);
+        });
+    }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    AudioManager.init();
+});
+
 document.querySelectorAll('.glass-button').forEach(button => {
     button.addEventListener('mouseenter', function() {
         if (this.classList.contains('glitch-matrix')) {
@@ -125,6 +149,7 @@ document.querySelectorAll('.glass-button').forEach(button => {
     });
     
     button.addEventListener('click', function() {
+        AudioManager.playLizardSound();
         const buttonType = this.classList[1];
         const clickHandlers = {
             'cyberpunk': () => cyberpunkClick(this),
@@ -150,6 +175,7 @@ document.querySelectorAll('.enhanced-glass-button').forEach(button => {
         this.style.filter = '';
     });
     button.addEventListener('click', function(e) {
+        AudioManager.playLizardSound();
         const rect = this.getBoundingClientRect();
         const x = ((e.clientX - rect.left) / rect.width) * 100;
         const y = ((e.clientY - rect.top) / rect.height) * 100;
@@ -172,7 +198,6 @@ document.querySelectorAll('.enhanced-glass-button').forEach(button => {
             fragments.offsetHeight;
             fragments.style.animation = '';
         }
-        
         if (impact) {
             impact.style.animation = 'none';
             impact.offsetHeight;
@@ -295,7 +320,6 @@ function quantumNexusClick(button) {
         setTimeout(() => {
             button.classList.remove('quantum-cooling');
         }, config.cooldownDuration);
-        
     }, config.explosionDuration);
 }
 
@@ -391,7 +415,6 @@ function generateQuantumParticleKeyframes() {
             }
         `;
     }
-    
     keyframes += `
         @keyframes dimensional-rift {
             0% { 
@@ -416,11 +439,9 @@ function generateQuantumParticleKeyframes() {
             }
         }
     `;
-    
     style.textContent = keyframes;
     document.head.appendChild(style);
 }
-
 generateQuantumParticleKeyframes();
 document.getElementById('quantumButton')?.addEventListener('click', function() {
     quantumNexusClick(this);
