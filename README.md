@@ -16,4 +16,6 @@ Feel free to browse the collection and use these buttons in your own projects!
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the TurNT Button Collection License (Version 1.0) - see the [LICENSE](LICENSE) file for details.
+
+**TL;DR:** Free to use with attribution! You must credit "TurNT Button Collection" with a link back to this repo when using these buttons in your projects. Cannot be resold as a standalone product.
